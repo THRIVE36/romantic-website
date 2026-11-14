@@ -1,0 +1,322 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #491d3e, #100713 75%);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Both screens */
+
+.question-screen,
+.love-screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 35px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* FIRST SCREEN */
+
+.envelope {
+    font-size: 75px;
+    margin-bottom: 20px;
+    animation: float 2s ease-in-out infinite;
+}
+
+.small-text {
+    color: #ffb4d0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.question-screen h1 {
+    font-size: clamp(38px, 8vw, 68px);
+    line-height: 1.2;
+    color: #ffb5d0;
+    text-shadow: 0 0 25px #ff2e87;
+}
+
+.subtitle {
+    margin-top: 20px;
+    color: #e9c8da;
+    font-size: 16px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 35px;
+    min-height: 60px;
+}
+
+button {
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#yesBtn {
+    background: linear-gradient(135deg, #ff3e91, #ff78ad);
+    color: white;
+    box-shadow: 0 0 20px #ff3e91;
+}
+
+#yesBtn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 35px #ff3e91;
+}
+
+#noBtn {
+    background: white;
+    color: #a12a63;
+}
+
+.hint {
+    margin-top: 25px;
+    color: #d9a9c4;
+    font-size: 13px;
+}
+
+/* SECOND SCREEN */
+
+.love-screen {
+    display: none;
+}
+
+.love-screen.show {
+    display: flex;
+    animation: appear 1.5s ease;
+}
+
+.love-content {
+    width: 100%;
+    max-width: 700px;
+}
+
+.big-heart {
+    font-size: 85px;
+    animation: heartbeat 1.2s infinite;
+    filter: drop-shadow(0 0 20px #ff3b92);
+}
+
+.love-content h1 {
+    font-size: clamp(35px, 7vw, 60px);
+    color: #ff9ec5;
+    margin: 15px 0;
+    text-shadow: 0 0 20px #ff3e91;
+}
+
+.love-message {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ffe0ec;
+}
+
+/* FLOWERS */
+
+.bouquet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 30px 0;
+}
+
+.bouquet span {
+    font-size: clamp(45px, 10vw, 75px);
+    display: inline-block;
+    animation: bloom 1.5s ease both;
+    filter: drop-shadow(0 0 10px #ff8eb9);
+}
+
+.bouquet span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.bouquet span:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.bouquet span:nth-child(4) {
+    animation-delay: .6s;
+}
+
+.bouquet span:nth-child(5) {
+    animation-delay: .8s;
+}
+
+/* LOVE MESSAGE */
+
+.forever {
+    color: #ff8db9;
+    font-size: clamp(24px, 5vw, 35px);
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px #ff2385;
+    margin: 15px 0;
+}
+
+.final-message {
+    color: #f5c7da;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+/* APPLE MUSIC */
+
+.music-player {
+    width: 100%;
+    max-width: 660px;
+    margin: 25px auto;
+}
+
+.music-heading {
+    color: #ffb5d0;
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+.music-player iframe {
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+/* RESTART BUTTON */
+
+#againBtn {
+    background: #ff4e9a;
+    color: white;
+    margin: 20px 0;
+    box-shadow: 0 0 15px #ff4e9a;
+}
+
+#againBtn:hover {
+    transform: scale(1.05);
+}
+
+/* FALLING FLOWERS */
+
+#petals {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.petal {
+    position: absolute;
+    top: -40px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-30px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(700deg);
+        opacity: 0;
+    }
+}
+
+/* ANIMATIONS */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(0) rotate(-30deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 480px) {
+
+    .buttons {
+        gap: 12px;
+    }
+
+    button {
+        padding: 13px 23px;
+        font-size: 14px;
+    }
+
+    .love-message {
+        font-size: 16px;
+    }
+
+    .forever {
+        letter-spacing: 3px;
+    }
+
+    .music-player {
+        width: 100%;
+    }
+}
